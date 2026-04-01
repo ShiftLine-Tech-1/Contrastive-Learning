@@ -1,0 +1,10 @@
+__pycache__
+.ipynb_checkpoints
+
+logs/
+
+data/*
+artifacts/*
+
+!.gitkeep
+

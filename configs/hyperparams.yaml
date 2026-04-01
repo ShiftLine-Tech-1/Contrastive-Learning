@@ -1,0 +1,10 @@
+batch_size: 240
+learning_rate: 0.0001
+epochs: 10
+weight_decay: 0.0001
+projection_dimension: 256
+samples_per_class: 80
+warmup_steps: 2
+temperature: 0.1
+eta_min: 1e-5
+lr_start_factor: 0.3
