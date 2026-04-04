@@ -1,8 +1,13 @@
+from pathlib import Path
+
 from pydantic_settings import BaseSettings, SettingsConfigDict, YamlConfigSettingsSource
 
 
 class YamlConfig(BaseSettings):
     def __init__(self, yaml_path: str) -> None:
+        if not Path(yaml_path).exists():
+            raise FileNotFoundError(yaml_path)
+
         super().__init__(yaml_path=yaml_path)
 
     model_config = SettingsConfigDict(frozen=True, extra="ignore")
