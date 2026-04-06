@@ -1,7 +1,7 @@
 from typing import TypedDict
 
-from torch.nn import functional
 import torch
+from torch.nn import functional
 
 
 class TrainStepOutput(TypedDict):
@@ -11,6 +11,7 @@ class TrainStepOutput(TypedDict):
 
 
 def train_step(model, optimizer, criterion, batch_X, batch_y) -> TrainStepOutput:
+    model.train()
     device = next(model.parameters()).device
 
     optimizer.zero_grad()
