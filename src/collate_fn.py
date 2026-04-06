@@ -1,17 +1,13 @@
 import torch
 
 ROBERTA_MAX_SEQUENCE_LENGTH = 512
-STAFF_TYPE_MAP = {
-    "staff": 0, 
-    "outstaff": 1, 
-    "bench": 2
-}
 
 
-def collate_function(data: list[tuple[str, int]], tokenizer):
+def collate_function(data: list[tuple[str, int]], tokenizer, *, label_encoding_map: dict | None = None):
     texts, labels = zip(*data, strict=True)
 
-    labels = [STAFF_TYPE_MAP[label] for label in labels]
+    if label_encoding_map is not None:
+        labels = [label_encoding_map[label] for label in labels]
 
     encoding = tokenizer(
         texts,
@@ -25,7 +21,7 @@ def collate_function(data: list[tuple[str, int]], tokenizer):
     return (
         {
             "input_ids": encoding["input_ids"],
-            "attention_mask": encoding["attention_mask"]
+            "attention_mask": encoding["attention_mask"],
         },
         torch.tensor(labels, dtype=torch.long),
     )
