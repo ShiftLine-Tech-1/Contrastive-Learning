@@ -144,6 +144,22 @@ These tokens are added to the tokenizer vocabulary and the embedding matrix is r
 
 ---
 
+## Production Metrics
+
+In a real-world deployment, monitoring system resources and business metrics is critical. Below is an example of a real-time production dashboard tracking the service's health:
+
+<p align="center">
+  <img src="docs/dashboard.png" alt="Production Monitoring Dashboard" width="900"/>
+</p>
+
+**Key Observations:**
+- **System Health & Load:** Stable CPU (45%) and memory (~2 GB) consumption. The service comfortably handles around 50 requests per second (RPS).
+- **Latency:** Average response time is ~150-200 ms, an excellent benchmark for a heavy XLM-RoBERTa model in production.
+- **Model Confidence:** The average prediction confidence remains solid at ~84.1%.
+- **Class Distribution:** Real-time monitoring of predicted classes (staff, outstaff, bench) helps detect potential data drift early.
+
+---
+
 ## Scientific Foundation
 
 Every architectural decision in this project is backed by peer-reviewed research.
